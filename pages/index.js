@@ -1,12 +1,34 @@
-import React, { Fragment } from 'react'
+import { Fragment } from 'react';
+import Head from 'next/head';
 
-const HomePage = () => {
+import FeaturedPosts from '../components/home-page/featured-posts';
+import Hero from '../components/home-page/hero';
+import { getFeaturedPosts } from '../lib/posts-util';
+
+const HomePage = (props) => {
   return (
     <Fragment>
+      <Head>
+        <title>Max' Blog</title>
+        <meta
+          name='description'
+          content='I post about programming and web development.'
+        />
+      </Head>
       <Hero />
-      <FeaturedPosts />
+      <FeaturedPosts posts={props.posts} />
     </Fragment>
-  )
-};
+  );
+}
+
+export const getStaticProps = () => {
+  const featuredPosts = getFeaturedPosts();
+
+  return {
+    props: {
+      posts: featuredPosts,
+    },
+  };
+}
 
 export default HomePage;
