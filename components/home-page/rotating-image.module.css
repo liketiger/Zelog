@@ -1,0 +1,12 @@
+.pic {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  animation: rotate_image 5s linear infinite;
+}
+
+@keyframes rotate_image {
+  100% {
+    transform: rotate(360deg);
+  }
+}

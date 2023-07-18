@@ -1,6 +1,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
-
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import { CardActionArea } from '@mui/material';
 import classes from './post-item.module.css';
 
 function PostItem(props) {
@@ -18,20 +21,28 @@ function PostItem(props) {
   return (
     <li className={classes.post}>
       <Link href={linkPath}>
-        <div className={classes.image}>
-          <Image
-            src={imagePath}
-            alt={title}
-            width={300}
-            height={200}
-            layout="responsive"
-          />
-        </div>
-        <div className={classes.content}>
-          <h3>{title}</h3>
-          <time>{formattedDate}</time>
-          <p>{excerpt}</p>
-        </div>
+        <Card sx={{ borderRadius: 3 }}>
+          <CardActionArea>
+            <Image
+              src={imagePath}
+              alt={title}
+              width={300}
+              height={200}
+              layout="responsive"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                {title}
+              </Typography>
+              <Typography variant="body1" color="text.secondary" sx={{ marginBottom: 1 }}>
+                {formattedDate}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                {excerpt}
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
       </Link>
     </li>
   );
