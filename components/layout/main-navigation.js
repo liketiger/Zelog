@@ -129,9 +129,8 @@ function MainNavigation() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: { xs: 'none', md: 'flex-end' } }}>
             {pages.map((page) => (
-              <Link href={page.href}>
+              <Link href={page.href} key={page.title}>
                 <Button
-                  key={page.title}
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: 'white', display: 'block' }}
                 >
